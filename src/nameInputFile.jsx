@@ -24,23 +24,27 @@ class NameInput extends Component
             [event.target.name]: event.target.value // ehhez a használhathoz a state-ben és a HTML-ben ugyanúgy kell elnevezni a name változókat!
         })
 
-
-        console.log(event.target.value);
+        this.props.onNameChange(event.target.name, event.target.value);    // app.js-ben lévő event elérése props-on keresztül, ami
+                                                                          // az ott lévő HTML-ben pedig meghívja a handleNameChange function-t
     }
 
+    componentWillReceiveProps(prevProps, nextProps)     // eredetileg a state direkt mutálása browser-ben nem módosította a kirenderelt 
+    {                                                   // értéket a html-ben, nem követte le a változásokat
+        this.setState({
+            firstName: nextProps.firstName,
+            lastName: prevProps.lastName
+        })
+    }
 
     render() 
     {
         const { lastName, firstName } = this.state;
-        const fullName = `${firstName} ${lastName}`;
 
         return (
             <div>
 
-                Default state-ben lévő név: <b> {fullName} </b> <br />
-
-                First Name: <input name='firstName' onChange={ this.handleInputChange }/> <br />
-                Last Name: <input name="lastName" onChange={ this.handleInputChange }/> 
+                First Name: <input name='firstName' onChange={ this.handleInputChange } value={ firstName }/> <br />
+                Last Name: <input name="lastName" onChange={ this.handleInputChange } value={ lastName }/> 
                 
             </div>
         )    
