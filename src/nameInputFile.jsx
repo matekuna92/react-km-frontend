@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 
 class NameInput extends Component
 {
-    constructor()
+    constructor(props)
     {
-        super();
+        super(props);
+        console.log(props);
 
         this.state = {
-            firstName: 'Bela',
-            lastName: 'Nagy'
+            firstName: this.props.firstName,
+            lastName: this.props.lastName
+
+           // firstName: 'Bela',
+           // lastName: 'Nagy'
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);

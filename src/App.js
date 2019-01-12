@@ -6,10 +6,15 @@ import NameInput from './nameInputFile.jsx';
 class App extends Component {
 
   render() {
-    return (
 
-      <NameInput> </NameInput>
-      
+    const firstName = 'Bela';
+    const lastName = 'Nagy';
+
+    return (
+      <div>
+          Name: 
+          <NameInput firstName={ firstName } lastName={ lastName }> </NameInput>
+      </div>
       )
   }
 }
