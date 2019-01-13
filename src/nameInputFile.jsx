@@ -7,13 +7,13 @@ class NameInput extends Component
         super(props);
         console.log(props);
 
-        this.state = {
-            firstName: this.props.firstName,
-            lastName: this.props.lastName
+ //       this.state = {
+   //         firstName: this.props.firstName,
+     //       lastName: this.props.lastName
 
            // firstName: 'Bela',
            // lastName: 'Nagy'
-        }
+ //       }
 
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -28,17 +28,17 @@ class NameInput extends Component
                                                                           // az ott lévő HTML-ben pedig meghívja a handleNameChange function-t
     }
 
-    componentWillReceiveProps(prevProps, nextProps)     // eredetileg a state direkt mutálása browser-ben nem módosította a kirenderelt 
-    {                                                   // értéket a html-ben, nem követte le a változásokat
-        this.setState({
-            firstName: nextProps.firstName,
-            lastName: prevProps.lastName
-        })
-    }
+ //   componentWillReceiveProps(prevProps, nextProps)     // eredetileg a state direkt mutálása browser-ben nem módosította a kirenderelt 
+ //   {                                                   // értéket a html-ben, nem követte le a változásokat
+ //       this.setState({
+ //           firstName: nextProps.firstName,
+ //           lastName: prevProps.lastName
+ //       })
+ //   }
 
     render() 
     {
-        const { lastName, firstName } = this.state;
+        const { lastName, firstName } = this.props;
 
         return (
             <div>
