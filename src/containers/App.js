@@ -13,6 +13,10 @@ class App extends Component {
     {
         super();
 
+        this.state = {
+            apiDevices: []
+        }
+
         this.handleAddDevice = this.handleAddDevice.bind(this);
     }
 
@@ -29,12 +33,15 @@ class App extends Component {
 
     componentDidMount()
     {
-        getDevices();
+        getDevices()
+        .then(response => {
+            console.log(response.data);
+        })
     }
-    
+
     render()
     {
-        console.log(this.props);
+       // console.log(this.props);
         return (
             <div style={{ marginBottom: 50 }}> 
 
