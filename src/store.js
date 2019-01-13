@@ -29,7 +29,12 @@ const deviceReducer = (state = { expenses: [] }, action ) =>{
     }
 }
 
-const store = createStore(countReducer,
+const rootReducer = combineReducers({
+    count: countReducer,
+    device: deviceReducer
+})
+
+const store = createStore(rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 store.subscribe( () => console.log('count:', store.getState()));
