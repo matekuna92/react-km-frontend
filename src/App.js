@@ -5,6 +5,7 @@ import './App.css';
 import DeviceForm from './components/deviceForm';
 import DeviceList from './components/deviceList';
 import { connect } from 'react-redux';
+import { addDevice } from './actions/actionTypes';
 
 class App extends Component {
     constructor()
@@ -49,7 +50,19 @@ class App extends Component {
     }
 }
 
-export default connect()(App);
+const mapStateToProps = (state) => {            // state to props
+    return {
+        devices: state.device.devices
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {      // action creator function-ök leválogatása
+    return {
+        onAddDevice: (device) => dispatch(addDevice(device))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 
   /*

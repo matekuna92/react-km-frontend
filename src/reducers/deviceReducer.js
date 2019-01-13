@@ -1,6 +1,6 @@
 import { ADD_DEVICE } from '../actions/actionTypes';
 
-const deviceReducer = (state = { expenses: [] }, action ) => { 
+const deviceReducer = (state = { devices: [] }, action ) => { 
     switch(action.type)
     {
         case ADD_DEVICE: return {
