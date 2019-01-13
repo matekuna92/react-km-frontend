@@ -4,6 +4,7 @@ import './App.css';
 //import NameInput from './nameInputFile.jsx';
 import DeviceForm from './components/deviceForm';
 import DeviceList from './components/deviceList';
+import { connect } from 'react-redux';
 
 class App extends Component {
     constructor()
@@ -36,6 +37,7 @@ class App extends Component {
 
     render()
     {
+        console.log(this.props);
         return (
             <div style={{ marginBottom: 50 }}> 
 
@@ -47,7 +49,7 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect()(App);
 
 
   /*
