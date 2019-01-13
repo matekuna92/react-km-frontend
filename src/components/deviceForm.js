@@ -12,6 +12,7 @@ class DeviceForm extends Component
         }
     
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleAddExpense = this.handleAddExpense.bind(this);
     }
 
     
@@ -20,6 +21,15 @@ class DeviceForm extends Component
         this.setState({
             [event.target.name]: event.target.value // state-ben és a HTML name-ben egyeznie kell az elnevezéseknek
         })
+    }
+
+    handleAddExpense()
+    {
+        const { name, amount } = this.state;
+
+        this.props.onAddExpense({
+            name, amount
+        });
     }
 
     render()
@@ -32,6 +42,8 @@ class DeviceForm extends Component
         <input name="name" value={ name } onChange={ this.handleInputChange } />
         <label> Mennyiség: </label>
         <input name="amount" value={ amount } onChange={ this.handleInputChange } />
+
+        <button onClick={ this.handleAddExpense }> Hozzáad </button>
 
     </div>
     }

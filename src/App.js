@@ -22,6 +22,16 @@ class App extends Component {
                 { id: 8, name: 'Apple', amount: 6 }
             ]
         }
+
+        this.handleAddDevice = this.handleAddDevice.bind(this);
+    }
+
+    handleAddDevice(device)
+    {
+        this.setState({
+            devices: [...this.state.devices, 
+            Object.assign(device, { id: this.state.devices[this.state.devices.length -1].id + 1 })]
+        })
     }
 
     render()
@@ -29,7 +39,7 @@ class App extends Component {
         return (
             <div style={{ marginBottom: 50 }}> 
 
-                <DeviceForm />
+                <DeviceForm onAddDevice={ this.handleAddDevice }/>
                 <DeviceList devices={ this.state.devices }/>
                 
             </div>
