@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function DeviceList(props)
+class DeviceList extends Component
 {
-    return <table>
-    <thead>
-        <tr>
-            <td> Name </td>
-            <td> Amount </td>
-        </tr>
-    </thead>
+    constructor()
+    {
+        super();        // react.Component ősosztály konstruktorát meg kell hívni, mielőtt a saját state-et állíthatnom
 
-    <tbody>
+        this.state = {
+            amountGreaterThan: 10
+        }
+    }
 
-   { props.devices.map( (device) => {
-        return <tr key= { device.id }> 
-            <td> { device.name } </td> 
-            <td> { device.amount } </td> 
-        </tr>
-    })}
+    render()
+    {
+        return <div>
+            
+            <label> Összeg nagyobb, mint: </label>
+            <input type="number" value={ this.state.amountGreaterThan } onChange={ (event) => this.setState({ amountGreaterThan: event.target.value }) }/> 
+        
+        <table>
 
-    </tbody>
-    </table>;
+            <thead>
+                <tr>
+                    <td> Name </td>
+                    <td> Amount </td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                { this.props.devices.map( (device) => {
+                return device.amount > this.state.amountGreaterThan && 
+                <tr key= { device.id }> 
+                        <td> { device.name } </td> 
+                        <td> { device.amount } </td> 
+                </tr>
+            })}
+
+            </tbody>
+
+        </table>
+        </div>
+    }
 }
 
 export default DeviceList;
