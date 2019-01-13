@@ -6,6 +6,7 @@ import DeviceForm from '../components/deviceForm';
 import DeviceList from '../components/deviceList';
 import { connect } from 'react-redux';
 import { addDevice } from '../actions/actionTypes';
+import { getDevices } from '../api/index';
 
 class App extends Component {
     constructor()
@@ -26,6 +27,11 @@ class App extends Component {
      //  })
     }
 
+    componentDidMount()
+    {
+        getDevices();
+    }
+    
     render()
     {
         console.log(this.props);
