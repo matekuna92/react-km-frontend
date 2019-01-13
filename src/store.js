@@ -15,7 +15,22 @@ const countReducer = ( (state=0, action) => {
     return state;   // alapértelmezett return
 })
 
-const store = createStore(countReducer);
+const deviceReducer = (state = { expenses: [] }, action ) =>{
+    switch(action.type)
+    {
+        case ADD_DEVICE: return {
+            ...state,
+            devices: [...state.devices, 
+                Object.assign(action.value, { id: this.state.devices[this.state.devices.length -1].id + 1 })]
+        }           /* Mivel az app.js-ben a function(device) paramétert kapott, így ott a tömbben a device-t adtuk át az Object.assign-nak -->
+                     reducer esetén viszont már action-t kap paraméterként, így az átadott objektum az action.value lesz ! */
+
+        default: return state;
+    }
+}
+
+const store = createStore(countReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 store.subscribe( () => console.log('count:', store.getState()));
 
