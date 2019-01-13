@@ -27,7 +27,7 @@ class DeviceForm extends Component
     {
         const { name, amount } = this.state;
 
-        this.props.onAddExpense({
+        this.props.onAddDevice({
             name, amount
         });
     }
