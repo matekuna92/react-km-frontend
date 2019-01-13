@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 class DeviceForm extends Component
 {
@@ -47,6 +48,14 @@ class DeviceForm extends Component
 
     </div>
     }
+}
+
+DeviceForm.defaultProps = {
+    onAddDevice: () => {}       // ha undefined vagy null értéke van, akkor üres metódust csinál belőle
+}
+
+DeviceForm.propTypes = {
+    onAddDevice: PropTypes.func.isRequired  // onAddDevice nevű function-t várunk props-on keresztül
 }
 
 export default DeviceForm;

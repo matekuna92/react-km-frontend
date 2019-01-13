@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 class DeviceList extends Component
 {
@@ -42,6 +43,10 @@ class DeviceList extends Component
         </table>
         </div>
     }
+}
+
+DeviceList.propTypes = {
+    devices: PropTypes.array.isRequired // devices tömböt várunk props-on keresztül
 }
 
 export default DeviceList;
