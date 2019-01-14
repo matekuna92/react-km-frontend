@@ -6,8 +6,9 @@ import DeviceForm from '../components/deviceForm';
 import DeviceList from '../components/deviceList';
 import { connect } from 'react-redux';
 import { addDevice } from '../actions/actionTypes';
-import { getDevices } from '../api/index';
+//import { getDevices } from '../api/index';
 import { incrementAsync } from '../actions/countActions';
+import { getDevices } from '../actions/deviceActions';
 
 class App extends Component {
     constructor()
@@ -34,13 +35,17 @@ class App extends Component {
 
     componentDidMount()
     {
-        getDevices()
+        this.props.getDevices();
+       /* kiszervezve a deviceActions-be 
+
+       getDevices()
         .then(response => {
             this.setState({
                 apiDevices: response.data
             })
             console.log(response.data);
         })
+*/
     }
 
     render()
@@ -69,7 +74,8 @@ const mapStateToProps = (state) => {            // state to props
 const mapDispatchToProps = (dispatch) => {      // action creator function-ök leválogatása
     return {
         onAddDevice: (device) => dispatch(addDevice(device)),
-        increment: (value) => dispatch(incrementAsync(value))
+        increment: (value) => dispatch(incrementAsync(value)),
+        getDevices: () => dispatch(getDevices())
     }
 }
 
