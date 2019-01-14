@@ -7,6 +7,7 @@ import DeviceList from '../components/deviceList';
 import { connect } from 'react-redux';
 import { addDevice } from '../actions/actionTypes';
 import { getDevices } from '../api/index';
+import { incrementAsync } from '../actions/countActions';
 
 class App extends Component {
     constructor()
@@ -50,6 +51,8 @@ class App extends Component {
 
                 <DeviceForm onAddDevice={ this.handleAddDevice }/>
                 <DeviceList devices={ this.props.devices }/>
+
+                <button onClick={ () => this.props.increment(3) }> {this.props.count}  </button>
                 
             </div>
         )
@@ -58,13 +61,15 @@ class App extends Component {
 
 const mapStateToProps = (state) => {            // state to props
     return {
+        count: state.count,
         devices: state.device.devices
     }
 }
 
 const mapDispatchToProps = (dispatch) => {      // action creator function-ök leválogatása
     return {
-        onAddDevice: (device) => dispatch(addDevice(device))
+        onAddDevice: (device) => dispatch(addDevice(device)),
+        increment: (value) => dispatch(incrementAsync(value))
     }
 }
 
