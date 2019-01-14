@@ -1,5 +1,6 @@
-import { GET_DEVICES_PENDING, GET_DEVICES_SUCCESS, GET_DEVICES_FAIL } from './actionTypes';
-import { getDevices as getDevicesApi } from '../api/index';
+import { GET_DEVICES_PENDING, GET_DEVICES_SUCCESS, GET_DEVICES_FAIL, 
+    POST_DEVICE_PENDING, POST_DEVICE_SUCCESS, POST_DEVICE_FAIL } from './actionTypes';
+import { getDevices as getDevicesApi, addDevice as addDeviceApi } from '../api/index';
 
 function getDevices()
 {
@@ -29,6 +30,30 @@ function getDevices()
    // return { type: INCREMENT, value };
 }
 
+// POST állapotok kezelése
+
+const addDevice = (device) => (dispatch) => {
+    dispatch({
+        type: POST_DEVICE_PENDING,
+        value: []
+    });
+
+    addDeviceApi(device)
+    .then((response) => {
+        dispatch({    
+            type: POST_DEVICE_SUCCESS,
+            value: response.data
+        })
+    })
+    .catch(error => {
+        dispatch({
+            type: POST_DEVICE_FAIL,
+            error
+        })
+    })
+}
+
 export {
-    getDevices
+    getDevices,
+    addDevice
 }
