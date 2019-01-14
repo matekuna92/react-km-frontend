@@ -30,6 +30,8 @@ class DeviceList extends Component
 
             <tbody>
 
+            { this.props.isLoading && <p> Betöltés alatt... </p> }
+
                 { this.props.devices.map( (device) => {
                 return device.amount > this.state.amountGreaterThan && 
                 <tr key= { device.id }> 
@@ -45,8 +47,13 @@ class DeviceList extends Component
     }
 }
 
+DeviceList.defaultProps = {
+    isLoading: false
+}
+
 DeviceList.propTypes = {
-    devices: PropTypes.array.isRequired // devices tömböt várunk props-on keresztül
+    devices: PropTypes.array.isRequired, // devices tömböt várunk props-on keresztül
+    isLoading: PropTypes.bool
 }
 
 export default DeviceList;

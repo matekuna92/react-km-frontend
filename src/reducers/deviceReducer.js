@@ -1,6 +1,12 @@
-import { ADD_DEVICE } from '../actions/actionTypes';
+import { ADD_DEVICE, GET_DEVICES_PENDING, GET_DEVICES_SUCCESS, GET_DEVICES_FAIL } from '../actions/actionTypes';
 
 const initialState = {
+   
+    devices: [],
+    isPending: false,
+    error: null
+
+    /*
     devices: [
         { id: 1, name: 'LG', amount: 2 },
         { id: 2, name: 'Samsung', amount: 5 },
@@ -11,11 +17,34 @@ const initialState = {
         { id: 7, name: 'NoName', amount: 11 },
         { id: 8, name: 'Apple', amount: 6 }
     ]
+    */
 }
 
 const deviceReducer = (state = initialState, action ) => { 
     switch(action.type)
     {
+        case GET_DEVICES_PENDING: return {
+            ...state,
+
+            devices: [],
+            isPending: true,
+            error: null
+        }
+
+        case GET_DEVICES_SUCCESS: return {
+            ...state,
+
+            devices: action.value,
+            isPending: false
+        }
+
+        case GET_DEVICES_FAIL: return {
+            ...state,
+            isPending: false,        // devices [] array ürítése nem szükséges, a PENDING már üríti
+            error: action.error
+        }
+
+
         case ADD_DEVICE: return {
             ...state,
             devices: [...state.devices, 
