@@ -2,6 +2,8 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { INCREMENT, DECREMENT, ADD_DEVICE, increment, decrement } from './actions/actionTypes';
 import countReducer from './reducers/countReducer';
 import deviceReducer from './reducers/deviceReducer';
+import { reduxLogger } from './utils/reduxLogger';
+import thunk from 'redux-thunk';
 
 /* Kiszervezve 2 külön fájlba
 
@@ -43,8 +45,26 @@ const rootReducer = combineReducers({
     device: deviceReducer
 })
 
+const middleware = [thunk, reduxLogger];
+
+const composeEnhancers =
+typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(...middleware),
+  // other store enhancers if any
+);
+
+const store = createStore(rootReducer, enhancer);
+
+/* EREDETI STORE: 
 const store = createStore(rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+*/
 
 /*
 store.subscribe( () => console.log('count:', store.getState()));

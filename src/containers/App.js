@@ -35,6 +35,9 @@ class App extends Component {
     {
         getDevices()
         .then(response => {
+            this.setState({
+                apiDevices: response.data
+            })
             console.log(response.data);
         })
     }
