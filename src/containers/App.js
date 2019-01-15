@@ -5,8 +5,10 @@ import '../App.css';
 import DeviceForm from '../components/deviceForm';
 import DeviceList from '../components/deviceList';
 import { connect } from 'react-redux';
-import { addDevice } from '../actions/actionTypes';
+//import { addDevice } from '../actions/actionTypes';
 //import { getDevices } from '../api/index';
+import { addDevice } from '../actions/deviceActions';
+
 import { incrementAsync } from '../actions/countActions';
 import { getDevices } from '../actions/deviceActions';
 
@@ -24,7 +26,7 @@ class App extends Component {
 
     handleAddDevice(device)
     {
-        this.props.onAddDevice(device);
+        this.props.addDevice(device);
 
       // props előtti állapot, ahol a devices array még helyben, itt az App-ban volt definiálva a reducer helyett  
      //   this.setState({
@@ -74,7 +76,7 @@ const mapStateToProps = (state) => {            // state to props
 
 const mapDispatchToProps = (dispatch) => {      // action creator function-ök leválogatása
     return {
-        onAddDevice: (device) => dispatch(addDevice(device)),
+        addDevice: (device) => dispatch(addDevice(device)),
         increment: (value) => dispatch(incrementAsync(value)),
         getDevices: () => dispatch(getDevices())
     }

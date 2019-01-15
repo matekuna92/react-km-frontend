@@ -34,7 +34,7 @@ class DeviceList extends Component
 
                 { this.props.devices.map( (device) => {
                 return device.amount > this.state.amountGreaterThan && 
-                <tr key= { device.id }> 
+                <tr key= { device._id }> 
                         <td> { device.name } </td> 
                         <td> { device.amount } </td> 
                 </tr>

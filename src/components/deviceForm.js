@@ -13,7 +13,7 @@ class DeviceForm extends Component
         }
     
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleAddExpense = this.handleAddExpense.bind(this);
+        this.handleAddDevice = this.handleAddDevice.bind(this);
     }
 
     
@@ -24,7 +24,7 @@ class DeviceForm extends Component
         })
     }
 
-    handleAddExpense()
+    handleAddDevice()
     {
         const { name, amount } = this.state;
 
@@ -44,7 +44,7 @@ class DeviceForm extends Component
         <label> Mennyiség: </label>
         <input name="amount" value={ amount } onChange={ this.handleInputChange } />
 
-        <button onClick={ this.handleAddExpense }> Hozzáad </button>
+        <button onClick={ this.handleAddDevice }> Hozzáad </button>
 
     </div>
     }

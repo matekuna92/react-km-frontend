@@ -11,7 +11,7 @@ function getDevices()
             value: []
         })
 
-        getDevicesApi()
+       return getDevicesApi()
         .then(response => {
            dispatch({
             type: GET_DEVICES_SUCCESS,
@@ -38,7 +38,7 @@ const addDevice = (device) => (dispatch) => {
         value: []
     });
 
-    addDeviceApi(device)
+    return addDeviceApi(device)
     .then((response) => {
         dispatch({    
             type: POST_DEVICE_SUCCESS,
