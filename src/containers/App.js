@@ -9,8 +9,9 @@ export default function App()
   return(
     <Switch>
 
+    <Route path="/device/:id" component={devicePage} />
     <Route path="/devices" component={devicesPage} />
-    <Route path="/device" component={devicePage} />
+    <Redirect to="/devices" />
 
     </Switch>
   )
