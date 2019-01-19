@@ -58,8 +58,6 @@ class devicesPage extends Component {
 
                 <DeviceForm onAddDevice={ this.handleAddDevice }/>
                 <DeviceList devices={ this.props.devices } isLoading={ this.props.isPending }/>
-
-                <button onClick={ () => this.props.increment(3) }> {this.props.count}  </button>
                 
             </div>
         )
@@ -69,8 +67,10 @@ class devicesPage extends Component {
 const mapStateToProps = (state) => {            // state to props
     return {
         count: state.count,
-        devices: state.device.devices,
-        isPending: state.device.isPending
+        devices: state.devices,
+        isPending: state.isPending
+      //  devices: state.device.devices,
+      //  isPending: state.device.isPending
     }
 }
 

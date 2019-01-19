@@ -17,7 +17,7 @@ class DeviceList extends Component
 
     onItemClick(device)
     {
-        this.props.history.push(`/device/${device._id}`);
+        this.props.history.push(`/devices/${device._id}`);   /* device id URL-ben is megjelenik */
     }
 
     render()
@@ -41,12 +41,15 @@ class DeviceList extends Component
             { this.props.isLoading && <p> Betöltés alatt... </p> }
 
                 { this.props.devices.map( (device) => {
-                return device.amount > this.state.amountGreaterThan && 
-                <tr key= { device._id } onClick={ () => this.onItemClick(device) }> 
+                return (
+                    device.amount > this.state.amountGreaterThan && (
+                    <tr key= { device._id } onClick={ () => this.onItemClick(device) }> 
                         <td> { device.name } </td> 
                         <td> { device.amount } </td> 
                 </tr>
-            })}
+                )    
+            )
+        })}
 
             </tbody>
 

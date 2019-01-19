@@ -10,8 +10,14 @@ export const POST_DEVICE_PENDING = 'POST_DEVICE_PENDING';
 export const POST_DEVICE_SUCCESS = 'POST_DEVICE_SUCCESS';
 export const POST_DEVICE_FAIL = 'POST_DEVICE_FAIL';
 
+export const GET_DEVICE_PENDING = "GET_DEVICE_PENDING";
+export const GET_DEVICE_SUCCESS = "GET_DEVICE_SUCCESS";
+export const GET_DEVICE_FAIL = "GET_DEVICE_FAIL";
+
+/*
 export function addDevice(device)
 {
     return { type: ADD_DEVICE, value: device };
 }
+*/
 

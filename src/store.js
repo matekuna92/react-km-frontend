@@ -1,7 +1,8 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { INCREMENT, DECREMENT, ADD_DEVICE, increment, decrement } from './actions/actionTypes';
-import countReducer from './reducers/countReducer';
-import deviceReducer from './reducers/deviceReducer';
+//import countReducer from './reducers/countReducer';
+//import deviceReducer from './reducers/deviceReducer';
+import rootReducer from './reducers/deviceReducer';
 import { reduxLogger } from './utils/reduxLogger';
 import thunk from 'redux-thunk';
 
@@ -39,11 +40,12 @@ const deviceReducer = (state = { expenses: [] }, action ) => {
 }
 
 */
-
+/*
 const rootReducer = combineReducers({
     count: countReducer,
     device: deviceReducer
 })
+*/
 
 const middleware = [thunk, reduxLogger];
 

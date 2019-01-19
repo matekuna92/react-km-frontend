@@ -8,7 +8,7 @@ function getDevices()
     {
         dispatch({
             type: GET_DEVICES_PENDING, 
-            value: []
+     //       value: []
         })
 
        return getDevicesApi()
@@ -24,9 +24,7 @@ function getDevices()
                 error
             })
         })
-
     }
-
    // return { type: INCREMENT, value };
 }
 
