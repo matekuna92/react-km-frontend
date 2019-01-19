@@ -40,7 +40,7 @@ const addDevice = (device) => (dispatch) => {
     .then((response) => {
         dispatch({    
             type: POST_DEVICE_SUCCESS,
-            value: response.data
+            value: response.value
         })
     })
     .catch(error => {
