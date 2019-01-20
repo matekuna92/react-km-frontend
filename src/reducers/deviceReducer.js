@@ -1,6 +1,15 @@
-import { GET_DEVICES_PENDING, GET_DEVICES_SUCCESS, GET_DEVICES_FAIL,
-    POST_DEVICE_SUCCESS, POST_DEVICE_FAIL, POST_DEVICE_PENDING,
-    GET_DEVICE_PENDING, GET_DEVICE_SUCCESS, GET_DEVICE_FAIL } from '../actions/actionTypes';
+import { 
+        GET_DEVICES_PENDING, 
+        GET_DEVICES_SUCCESS, 
+        GET_DEVICES_FAIL,
+        POST_DEVICE_SUCCESS, 
+        POST_DEVICE_FAIL, 
+        POST_DEVICE_PENDING,
+        GET_DEVICE_PENDING, 
+        GET_DEVICE_SUCCESS, 
+        GET_DEVICE_FAIL,
+        GET_DEVICE
+        } from '../actions/actionTypes';
 
 const initialState = {
     expense: {},
@@ -50,9 +59,10 @@ function deviceReducer(state = {}, action)
 {
     switch(action.type)
     {
-        case GET_DEVICE_PENDING: return {};
-        case GET_DEVICE_FAIL: return {};
-        case GET_DEVICE_SUCCESS: return action.device;
+       /// case GET_DEVICE_PENDING: return {};
+      ///  case GET_DEVICE_FAIL: return {};
+      ///  case GET_DEVICE_SUCCESS: return action.device;
+        case GET_DEVICE: return action.value;
         default: return state;
     }
 }

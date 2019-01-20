@@ -1,6 +1,17 @@
-import { GET_DEVICES_PENDING, GET_DEVICES_SUCCESS, GET_DEVICES_FAIL, 
-    POST_DEVICE_PENDING, POST_DEVICE_SUCCESS, POST_DEVICE_FAIL } from './actionTypes';
-import { getDevices as getDevicesApi, addDevice as addDeviceApi } from '../api/index';
+import { 
+        GET_DEVICES_PENDING, 
+        GET_DEVICES_SUCCESS, 
+        GET_DEVICES_FAIL, 
+        POST_DEVICE_PENDING, 
+        POST_DEVICE_SUCCESS, 
+        POST_DEVICE_FAIL, 
+        GET_DEVICE 
+        } from './actionTypes';
+import { 
+        getDevices as getDevicesApi, 
+        addDevice as addDeviceApi,
+        getDevice as getDeviceApi
+        } from '../api/index';
 
 function getDevices()
 {
@@ -40,7 +51,7 @@ const addDevice = (device) => (dispatch) => {
     .then((response) => {
         dispatch({    
             type: POST_DEVICE_SUCCESS,
-            value: response.value
+            value: response.data
         })
     })
     .catch(error => {
@@ -51,7 +62,20 @@ const addDevice = (device) => (dispatch) => {
     })
 }
 
+function getDevice(id)
+{
+    return async function(dispatch)
+    {
+       // const device = { name: 'Car', amount: 10 };
+        const device = getDeviceApi(id);
+        dispatch({ value: device, type: GET_DEVICE });
+    }
+
+}
+
+
 export {
     getDevices,
-    addDevice
+    addDevice,
+    getDevice
 }

@@ -14,6 +14,8 @@ export const GET_DEVICE_PENDING = "GET_DEVICE_PENDING";
 export const GET_DEVICE_SUCCESS = "GET_DEVICE_SUCCESS";
 export const GET_DEVICE_FAIL = "GET_DEVICE_FAIL";
 
+export const GET_DEVICE = 'GET_DEVICE';
+
 /*
 export function addDevice(device)
 {

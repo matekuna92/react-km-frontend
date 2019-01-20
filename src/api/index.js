@@ -16,7 +16,14 @@ function addDevice(device)
     //return axios.post(`${apiURL}/devices`, device);
 }
 
+async function getDevice(id)
+{
+   const resp = await axios.get(`http://localhost:3005/devices/${id}`);
+   return resp.data;
+}
+
 export {
     getDevices,
-    addDevice
+    addDevice,
+    getDevice
 } 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Device from '../components/device';
+import { getDevice } from '../actions/deviceActions';
 
 
     function mapStateToProps(state)
@@ -16,7 +17,8 @@ import Device from '../components/device';
     function mapDispatchToProps(dispatch)
     {
         return {
-            getDevice: id => dispatch({ id, type: 'GET_DEVICE' })
+            //getDevice: id => dispatch({ id, type: 'GET_DEVICE' })
+            getDevice: id => dispatch(getDevice(id))    // deviceActions-ből
         }
     }
 
