@@ -17,11 +17,6 @@ function getDevices()
 {
     return function(dispatch)                    // https://github.com/reduxjs/redux-thunk/blob/master/src/index.js
     {
-        dispatch({
-            type: GET_DEVICES_PENDING, 
-     //       value: []
-        })
-
        return getDevicesApi()
         .then(response => {
            dispatch({
@@ -41,36 +36,47 @@ function getDevices()
 
 // POST állapotok kezelése
 
-const addDevice = (device) => (dispatch) => {
-    dispatch({
-        type: POST_DEVICE_PENDING,
-        value: []
-    });
+//const addDevice = (device) => (dispatch) => {
+    function addDevice(device)
+    {   
+        /*return function(dispatch)
+        {
+            return addDeviceApi(device)
+            .then((response) => {
+                dispatch({
+                    type: POST_DEVICE_PENDING,
+                    value: []
+                });
+            })
+        }*/
 
-    return addDeviceApi(device)
-    .then((response) => {
-        dispatch({    
-            type: POST_DEVICE_SUCCESS,
-            value: response.data
-        })
-    })
-    .catch(error => {
-        dispatch({
-            type: POST_DEVICE_FAIL,
-            error
-        })
-    })
-}
+        return function(dispatch)
+        {
+            return addDeviceApi(device)
+            .then((response) => {
+                dispatch({    
+                    type: POST_DEVICE_SUCCESS,
+                    value: response.data
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: POST_DEVICE_FAIL,
+                    error
+                })
+            })
+        }
+    }
 
 function getDevice(id)
 {
     return async function(dispatch)
     {
        // const device = { name: 'Car', amount: 10 };
-        const device = getDeviceApi(id);
+       //   getDeviceApi(id).then(device => dispatch({ value: device, type: GET_DEVICE })); ugyanaz a kód lenne, mint await-tel
+        const device = await getDeviceApi(id);
         dispatch({ value: device, type: GET_DEVICE });
     }
-
 }
 
 

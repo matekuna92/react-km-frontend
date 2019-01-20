@@ -19,7 +19,9 @@ function addDevice(device)
 async function getDevice(id)
 {
    const resp = await axios.get(`http://localhost:3005/devices/${id}`);
+   console.log(resp.data);
    return resp.data;
+  
 }
 
 export {
