@@ -11,6 +11,8 @@ import {
         GET_DEVICE
         } from '../actions/actionTypes';
 
+import { START_LOADING, STOP_LOADING } from '../actions/loaderActions';
+
 const initialState = {
     expense: {},
     devices: [],
@@ -71,13 +73,15 @@ function isPendingReducer(state = false, action)
 {
     switch(action.type)
     {
-        case GET_DEVICES_PENDING: return true;
-        case GET_DEVICE_PENDING: return true;       // csak pending állapot esetén szeretnénk loader-t látni
+        case START_LOADING: return true;
+        case STOP_LOADING: return false;
+       // case GET_DEVICES_PENDING: return true;
+      //  case GET_DEVICE_PENDING: return true;       // csak pending állapot esetén szeretnénk loader-t látni
         
         // POST_EXPENSE_PENDING
-        case POST_DEVICE_PENDING: return true;
+      //  case POST_DEVICE_PENDING: return true;
         
-        default: return false;        
+        default: return state;           
     }
 }
 
