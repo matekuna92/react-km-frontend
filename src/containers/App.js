@@ -10,9 +10,11 @@ function App(props)
   return(
     <div>
       { props.isPending && <div> Loading! </div> }
+
+    
     <Switch>
 
-    <Route path="/device/:id" component={devicePage} />
+    <Route path="/devices/:id" component={devicePage} />
     <Route path="/devices" component={devicesPage} />
     <Redirect to="/devices" />
 

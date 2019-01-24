@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import Device from '../components/device';
 import { getDevice } from '../actions/deviceActions';
 
-
     function mapStateToProps(state)
     {
-
         return {
             device: state.device
         }

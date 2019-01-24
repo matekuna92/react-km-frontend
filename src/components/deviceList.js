@@ -24,8 +24,9 @@ class DeviceList extends Component
     {
         return <div>
             
-            <label> Összeg nagyobb, mint: </label>
-            <input type="number" value={ this.state.amountGreaterThan } onChange={ (event) => this.setState({ amountGreaterThan: event.target.value }) }/> 
+            <label> Összeg nagyobb, mint: </label> 
+            <input type="number" value={ this.state.amountGreaterThan } 
+            onChange={ (event) => this.setState({ amountGreaterThan: event.target.value }) }/> 
         
         <table>
 
@@ -38,12 +39,12 @@ class DeviceList extends Component
 
             <tbody>
 
-            { this.props.isLoading && <p> Betöltés alatt... </p> }
+             { this.props.isLoading && <p> Betöltés alatt... </p> }
 
-                { this.props.devices.map( (device) => {
+                { this.props.devices.map( device => {
                 return (
                     device.amount > this.state.amountGreaterThan && (
-                    <tr key= { device._id } onClick={ () => this.onItemClick(device) }> 
+                    <tr key= { device._id } onClick={ (event) => this.onItemClick(device) }> 
                         <td> { device.name } </td> 
                         <td> { device.amount } </td> 
                 </tr>

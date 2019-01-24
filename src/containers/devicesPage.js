@@ -76,8 +76,8 @@ const mapStateToProps = (state) => {            // state to props
 
 const mapDispatchToProps = (dispatch) => {      // action creator function-ök leválogatása
     return {
-        addDevice: (device) => dispatch(addDevice(device)),
-        increment: (value) => dispatch(incrementAsync(value)),
+        addDevice: device => dispatch(addDevice(device)),
+        increment: value => dispatch(incrementAsync(value)),
         getDevices: () => dispatch(getDevices())
     }
 }

@@ -13,6 +13,7 @@ import {
 
 import { START_LOADING, STOP_LOADING } from '../actions/loaderActions';
 
+/*
 const initialState = {
     expense: {},
     devices: [],
@@ -30,8 +31,8 @@ const initialState = {
         { id: 7, name: 'NoName', amount: 11 },
         { id: 8, name: 'Apple', amount: 6 }
     ]
-    */
 }
+    */
 
 // 10/1 előadás
 export default function rootReducer(state = {}, action)

@@ -55,7 +55,7 @@ DeviceForm.defaultProps = {
 }
 
 DeviceForm.propTypes = {
-    onAddDevice: PropTypes.func.isRequired  // onAddDevice nevű function-t várunk props-on keresztül
+    onAddDevice: PropTypes.func //.isRequired  // onAddDevice nevű function-t várunk props-on keresztül
 }
 
 export default DeviceForm;

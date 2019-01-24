@@ -7,7 +7,7 @@ import { startLoading, stopLoading } from '../actions/loaderActions';
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3005',
-    timeout: 1000
+    timeout: 3000
   });
 
   // Add a request interceptor
@@ -20,6 +20,7 @@ const axiosInstance = axios.create({
 }, function (error) 
 {
     // Do something with request error
+    store.dispatch(stopLoading());
     return Promise.reject(error);
 });
 
@@ -34,7 +35,6 @@ axiosInstance.interceptors.response.use(function (response)
 {
     // Do something with response error
     store.dispatch(stopLoading());
-
     return Promise.reject(error);
 });
 
